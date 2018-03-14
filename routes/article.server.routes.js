@@ -16,7 +16,7 @@
 	.put(users.requiresLogin, articles.update);
 
     app.route('/article/allArticlesList').get(articles.listView);
-    
+    app.route('/article/new').get(articles.createView);
     app.route('/article/:articleId').get(articles.singleView);
 
 app.param('articleId', articles.articleByID);
