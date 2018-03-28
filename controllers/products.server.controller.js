@@ -10,7 +10,13 @@ module.exports.createView = function (req,res){
     request: req,
     });
 }
-
+module.exports.singleView = function(req,res){
+  res.render('./../public/views/products/view.ejs',{
+    user: req.user || null,
+    request: req,
+    });
+  
+}
 module.exports.create = function(req, res) {
   var product = new Product(req.body);
   product.user = req.user;
@@ -43,7 +49,6 @@ exports.delete = function(req, res) {
 	});
 };
 
-
 module.exports.update = function(req, res) {
   var product = req.product;
 
@@ -56,6 +61,25 @@ module.exports.update = function(req, res) {
   			res.json(product);
   		}
   	});
+};
+
+module.exports.listView = function(req, res){
+  Product.find(function(err, data) {
+    if (err) {
+      return res.status(400).send({
+
+  				message: errorHandler.getErrorMessage(err)
+  			});
+    } else {
+      console.log("api called");
+  res.render('./../public/views/products/productList.ejs',{
+    user: req.user || null,
+    request: req,
+    products: data
+  });
+  }
+  }); 
+ 
 };
 
 module.exports.list = function(req, res) {

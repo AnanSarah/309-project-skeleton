@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>All Articles</title>
+    </head>
+    <body>
+        <h2>List of all products</h2>
+    </body>
+    
+    <h1>Product List</h1>
+    <% console.log(products) %>
+      <% for(var i=0; i<products.length; i++) { %>
+        <h1> <%= products[i].name %> </h1>
+        <p> <%= products[i].price %> </p>
+        <p> <%= products[i].quantity%></p>
+        <p> <%= products[i].content%></p>
+    <% } %>
+    </html>

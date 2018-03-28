@@ -6,7 +6,7 @@
         
         <h1>Input new Product</h1>
         <p>Name: </p>
-        <input type="text" id="title"/>
+        <input type="text" id="name"/>
         <p>Price</p>
         <textarea id="price"> Add price</textarea>
         <p>Quantity</p>
@@ -33,8 +33,9 @@
                      data: newProduct
                  }).done(function(response){
                      console.log(response);
-                     
+                     window.location.replace('/product/'+response._id);
                  }).fail(function(response){
+                     $('#error').text(JSON.parse(response.responseText).message);
                      console.log(response.responseText);
                  });
              });
