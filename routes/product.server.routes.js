@@ -9,8 +9,8 @@
 
   app.route('/product/new').get(products.createView);
   app.route('/product/productList').get(products.listView);
-    app.route('/product/:productId').get(products.singleView);
-app.param('productId', products.productByID);
+  app.route('/product/:productId').get(products.singleView);
+  app.param('productId', products.productByID);
 
 
 }
